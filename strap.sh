@@ -19,4 +19,4 @@ function run_directory() {
     echo "END $strap_dir"
 }
 
-run_directory /vmconfig/$1 | tee -a /vmconfig/provision.log
+run_directory /vmconfig/$1 |& tee -a /vmconfig/provision.log
