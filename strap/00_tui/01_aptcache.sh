@@ -2,8 +2,12 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+echo "Install Debian configuration utilities."
+sudo apt-get install -y debconf-utils
+
 echo "Install the apt cacher."
-sudo apt-get install -y apt-cacher-ng
+echo apt-cacher-ng apt-cacher-ng/tunnelenable boolean false | sudo debconf-set-selections
+DEBIAN_FRONTEND=noninteractive sudo apt-get install -y apt-cacher-ng
 
 echo "Configure the apt cacher."
 sudo sed -e "/AdminAuth/c AdminAuth: administrator:password" /etc/apt-cacher-ng/security.conf
