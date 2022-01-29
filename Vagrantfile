@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
             vb.cpus = 1
             vb.memory = 512
         end
-        acn.vm.network "private_network", ip: "192.168.99.99"
+        acn.vm.network "private_network", ip: "192.168.63.99"
         acn.vm.synced_folder __dir__, "/vmconfig"
         find_provisioners(acn, __dir__)
     end
